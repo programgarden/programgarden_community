@@ -4,9 +4,11 @@
 
 ProgramGarden은 오픈소스 프로젝트로, 커뮤니티의 기여를 통해 성장하고 있습니다. 이 가이드는 개발자들이 자신만의 커스텀 전략을 공유하거나, 코드를 개선하여 프로젝트에 기여하는 방법을 설명합니다.
 
-외부 전략을 `programgarden-community`에 기여하면, 다른 사용자들이 쉽게 사용할 수 있고, AI 바이브 코딩도 전략을 기반으로 프로그램 동산이 개발한 노코딩 시스템 트레이딩 DSL을 작성하여 비개발자가 쉽게 사용하도록 지원됩니다.
+외부 전략을 [`programgarden-community`](https://github.com/programgarden/programgarden_community)에 기여하면, 다른 사용자들이 트레이딩에 쉽게 사용할 수 있고, AI 바이브 코딩도 전략을 기반으로 프로그램 동산의 노코딩 시스템 트레이딩 DSL을 작성하여 비개발자가 쉽게 사용하도록 지원됩니다.
 
-이는 시스템 트레이더의 생태계를 풍부하게 만듭니다.
+이는 시스템 트레이더의 생태계를 풍부하게 만드는데 큰 도움이 됩니다. 🚀
+
+여러분의 기여가 더 나은 자동화매매 환경을 만드는 데 중요한 역할을 합니다!
 
 ## 2. 개발 환경 설정
 
@@ -42,10 +44,10 @@ ProgramGarden은 오픈소스 프로젝트로, 커뮤니티의 기여를 통해 
 
 커스텀 전략은 [`programgarden-community`](contribution_guide.md)에 기여되며, 상품에 맞는 각 전략별로 **전용 폴더**를 만들어야 합니다. 폴더 이름은 전략의 `클래스` 이름과 동일하게 만드는 것을 추천드립니다.
 
-* **컨디션 클래스**: `src/community/programgarden_community/overseas_stock/strategy_conditions/{Strategy ID}/` 폴더 생성
-* **신규매매 전략 클래스**: `src/community/programgarden_community/overseas_stock/new_order_conditions/{Strategy ID}/` 폴더 생성
-* **정정매매 전략 클래스**: `src/community/programgarden_community/overseas_stock/modify_order_conditions/{Strategy ID}/` 폴더 생성
-* **취소매매 전략 클래스**: `src/community/programgarden_community/overseas_stock/cancel_order_conditions/{Strategy ID}/` 폴더 생성
+* **컨디션 클래스**: `programgarden_community/overseas_stock/strategy_conditions/{Strategy ID}/` 폴더 생성
+* **신규매매 전략 클래스**: `programgarden_community/overseas_stock/new_order_conditions/{Strategy ID}/` 폴더 생성
+* **정정매매 전략 클래스**: `programgarden_community/overseas_stock/modify_order_conditions/{Strategy ID}/` 폴더 생성
+* **취소매매 전략 클래스**: `programgarden_community/overseas_stock/cancel_order_conditions/{Strategy ID}/` 폴더 생성
 
 외에도 상품과 전략 유형에 따라 적절한 디렉토리에 폴더를 생성하세요. 각 전략 폴더에는 다음 파일들이 **필수**로 포함되어야 합니다:
 
@@ -55,7 +57,7 @@ ProgramGarden은 오픈소스 프로젝트로, 커뮤니티의 기여를 통해 
 예시 파일 구조:
 
 ```
-src/community/programgarden_community/overseas_stock/
+programgarden_community/overseas_stock/
 ├── strategy_conditions/
 │   └── MySMACondition/
 │       ├── __init__.py
@@ -187,4 +189,4 @@ PR은 검토 후 병합됩니다. 피드백이 있을 수 있으니 적극적으
 
 질문이 있으면 Issues나 Discussions를 이용하세요.
 
-시스템 트레이딩 발전에 기여해주셔서 감사합니다! 🚀
+시스템 트레이딩 발전에 기여해주셔서 감사합니다!
