@@ -20,7 +20,7 @@ class StockSplitFunds(BaseNewOrderOverseasStock):
         self,
         appkey: Optional[str] = None,
         appsecretkey: Optional[str] = None,
-        percent_balance: float = 10.0,
+        percent_balance: float = 0.4,
         max_symbols: float = 5,
     ):
         """
