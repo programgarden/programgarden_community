@@ -47,7 +47,9 @@ class StockSplitFunds(BaseNewOrderOverseasStock):
                 appsecretkey=self.appsecretkey
             )
 
-        fcurr_dps = self.fcurr_dps * self.percent_balance
+        dp = self.dps[0]
+
+        fcurr_dps = dp.get("deposit") * self.percent_balance
 
         # 종목당 최대 매수 금액
         per_max_amt = round(fcurr_dps / self.max_symbols, 2)

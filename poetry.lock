@@ -553,31 +553,31 @@ typing-extensions = {version = ">=4.1.0", markers = "python_version < \"3.11\""}
 
 [[package]]
 name = "programgarden-core"
-version = "0.1.2"
+version = "0.1.3"
 description = "자동화매매 클래스 상속, 로그, 환경 등의 핵심이되는 오픈소스"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "programgarden_core-0.1.2-py3-none-any.whl", hash = "sha256:ae0ff2a37a8a31d98dda4d5c628ea2f915a67061531dfdf95329bfb78d5d1883"},
-    {file = "programgarden_core-0.1.2.tar.gz", hash = "sha256:7f5926ed72ae06bc0fd5782ff7e71f9cdcfc015738552a93d38a9f87b0d7cb39"},
+    {file = "programgarden_core-0.1.3-py3-none-any.whl", hash = "sha256:74ce953a49ffc220a167f109f3c5e3aaf905b3fd83804ebb050246d5d8c4c905"},
+    {file = "programgarden_core-0.1.3.tar.gz", hash = "sha256:2fa99f63585352404eabbb83d3023ce2fe3f403d34ba3669dca5e8da5d3cc252"},
 ]
 
 [[package]]
 name = "programgarden-finance"
-version = "0.1.4"
+version = "0.1.5"
 description = "프로그램 동산 운영진이 관리하는 증권사 데이터 오픈소스"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "programgarden_finance-0.1.4-py3-none-any.whl", hash = "sha256:461068fa2755ac918aa4d34d5fc080a21b29ddff63ceb95546d1b839c80449ac"},
-    {file = "programgarden_finance-0.1.4.tar.gz", hash = "sha256:94679a8fccb408c679d2d24b171b9c1274fcd0d17401c769d10ce4235f31cbaf"},
+    {file = "programgarden_finance-0.1.5-py3-none-any.whl", hash = "sha256:a7ee7a78543f8c1d504065ea0e36df332ab82ef8f47c451409bd59989248ebb7"},
+    {file = "programgarden_finance-0.1.5.tar.gz", hash = "sha256:5aec26383206bf61f0b2e471e4b0c473fd8623f4f9544d2b6bd083056c8edd51"},
 ]
 
 [package.dependencies]
 aiohttp = ">=3.10.0,<4.0.0"
-programgarden-core = ">=0.1.2,<0.2.0"
+programgarden-core = ">=0.1.3,<0.2.0"
 pydantic = ">=2.11.7,<3.0.0"
 python-dotenv = ">=1.1.1,<2.0.0"
 redis = ">=6.4.0,<7.0.0"
@@ -1168,4 +1168,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.9"
-content-hash = "4f0977f6c4722cef7bcbf3f462ecce8571b7e0fd53c14ebdd7f954d9d4c0e7cc"
+content-hash = "84ff6477fd6f7519a47cda25141563fd684d6722f4ed5e9478f9612c15d1e1ed"
