@@ -27,13 +27,13 @@ BasicLossCutManager
 ```python
 {
     "condition_id": "BasicLossCutManager",
-    "parameters": {
+    "params": {
         "losscut": -5.0
     }
 }
 ```
 
-#### 데이터 설명
+#### 파라미터 설명
 - `losscut` (float, 기본값: -5.0): 손절매를 실행할 손익률 임계값 (%)입니다. 음수 값으로 설정하며, 예를 들어 -5.0은 손익률이 -5% 이하일 때 손절매를 수행합니다.
 
 ## 주의사항

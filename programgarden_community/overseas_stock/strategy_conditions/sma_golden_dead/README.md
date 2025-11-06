@@ -42,7 +42,7 @@ SMAGoldenDeadCross
 ```python
 {
     "condition_id": "SMAGoldenDeadCross",
-    "parameters": {
+    "params": {
         "start_date": "20230101",
         "end_date": "20231231",
         "long_period": 50,
@@ -57,7 +57,7 @@ SMAGoldenDeadCross
 
 ```
 
-#### 데이터 설명
+#### 파라미터 설명
 - `start_date`: 분석 시작 날짜 (예: "20230101").
 - `end_date`: 분석 종료 날짜 (예: "20231231")
 - `long_period`: 장기 SMA 기간 (예: 50일)

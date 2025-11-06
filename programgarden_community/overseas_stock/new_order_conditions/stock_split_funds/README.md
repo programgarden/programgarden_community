@@ -31,7 +31,7 @@ StockSplitFunds
 ```python
 {
     "condition_id": "StockSplitFunds",
-    "parameters": {
+    "params": {
         "percent_balance": 0.4,
         "max_symbols": 3,
         "appkey": "your_appkey",
@@ -40,9 +40,9 @@ StockSplitFunds
 }
 ```
 
-#### 데이터 설명
+#### 파라미터 설명
 - `percent_balance`: 현재 예수금의 몇 %를 사용할지 설정합니다. 예를 들어 0.4는 예수금의 40%를 사용합니다.
-- `max_symbols`: 최대 몇 종목까지 매수할지 설정합니다. (예: 5)
+- `max_symbols`: 최대 몇 종목까지 매수할지 설정합니다. (예: 3)
 - `appkey`: LS증권 API 앱키.
 - `appsecretkey`: LS증권 API 앱시크릿키 (로그인용).
 

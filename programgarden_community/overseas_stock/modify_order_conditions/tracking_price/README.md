@@ -29,17 +29,19 @@ TrackingPriceModifyBuy
 ### DSL에 작성하는 방법
 ```python
 {
-    "condition_id": "TrackingPriceModifyBuy",
-    "parameters": {
-        "tick_threshold": 4,
+    "condition_id": "PricingRangeCanceller",
+    "params": {
+        "price_gap": 0.1,
+        "enable": "all",
         "appkey": "your_appkey",
         "appsecretkey": "your_appsecretkey"
     }
 }
 ```
 
-#### 데이터 설명
-- `tick_threshold`: 가격 차이 임계값으로 주문 가격과 현재 가격의 차이가 이 값 이상일 때 정정 주문을 생성합니다. (예: 4 달러)
+#### 파라미터 설명
+- `price_gap`: 가격 차이 임계값으로 주문 가격과 현재 가격의 차이가 이 값 이상일 때 정정 주문을 생성합니다. (예: 0.1 달러)
+- `enable`: 정정할 주문 종류 ("buy", "sell", 또는 "all").
 - `appkey`: LS증권 API 앱키.
 - `appsecretkey`: LS증권 API 앱시크릿키.
 

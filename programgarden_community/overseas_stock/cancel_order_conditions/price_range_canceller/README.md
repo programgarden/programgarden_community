@@ -32,18 +32,18 @@ PriceRangeCanceller
 ```python
 {
     "condition_id": "PriceRangeCanceller",
-    "parameters": {
+    "params": {
         "price_gap": 0.1,
-        "enable": "both",
+        "enable": "all",
         "appkey": "your_appkey",
         "appsecretkey": "your_appsecretkey"
     }
 }
 ```
 
-#### 데이터 설명
+#### 파라미터 설명
 - `price_gap` (float): 가격 차이 임계값 (예: 0.1은 0.1달러 차이).
-- `enable` (str): 취소할 주문 종류 ("buy", "sell", 또는 "both").
+- `enable` (str): 취소할 주문 종류 ("buy", "sell", 또는 "all").
 - `appkey` (Optional[str]): LS증권 API 앱키 (로그인용).
 - `appsecretkey` (Optional[str]): LS증권 API 앱시크릿키 (로그인용).
 

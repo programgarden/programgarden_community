@@ -2,11 +2,46 @@
 가격 추적 정정매수
 """
 from typing import List, Literal, Optional
+from pydantic import BaseModel, Field
 from programgarden_core import (
     BaseCancelOrderOverseasStock,
     BaseCancelOrderOverseasStockResponseType,
 )
 from programgarden_finance import LS, g3101, g3106
+
+
+class PriceRangeCancellerParams(BaseModel):
+    """
+    가격 범위 취소 전략 파라미터
+
+    외부 사용자가 이 전략을 사용할 때 필요한 파라미터를 정의합니다.
+    """
+
+    appkey: Optional[str] = Field(
+        None,
+        title="LS증권 앱키",
+        description="LS증권 API 인증을 위한 앱키"
+    )
+
+    appsecretkey: Optional[str] = Field(
+        None,
+        title="LS증권 앱시크릿키",
+        description="LS증권 API 인증을 위한 앱시크릿키"
+    )
+
+    price_gap: float = Field(
+        0.1,
+        title="가격 차이 임계값",
+        description="주문가격과 현재 호가의 차이가 이 값 이상이면 취소 (단위: 달러)",
+        gt=0,
+        json_schema_extra={"example": 0.1}
+    )
+
+    enable: Literal["buy", "sell", "all"] = Field(
+        "all",
+        title="활성화 모드",
+        description="취소 대상 (buy: 매수만, sell: 매도만, all: 모두)"
+    )
 
 
 class PriceRangeCanceller(BaseCancelOrderOverseasStock):
@@ -15,6 +50,7 @@ class PriceRangeCanceller(BaseCancelOrderOverseasStock):
     description: str = "주문가격에서 호가가 일정 틱 이상 벗어나면 취소"
     securities: List[str] = ["ls-sec.co.kr"]
     order_types = ["cancel_buy", "cancel_sell"]
+    parameter_schema: dict = PriceRangeCancellerParams.model_json_schema()
 
     def __init__(
         self,

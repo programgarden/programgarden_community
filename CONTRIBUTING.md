@@ -84,18 +84,99 @@ programgarden_community/overseas_stock/
 * [커스텀 DSL 개발자 가이드](custom_dsl.md)를 참고하여 클래스를 구현하세요.
 * 클래스 이름은 명확하고, 고유하게 지으세요.
 * `id` 속성은 클래스명과 맞춰주세요.
+* **파라미터 스키마를 Pydantic으로 정의**하여 외부 사용자가 쉽게 파라미터 정보를 조회할 수 있도록 하세요.
 
-#### **init**.py 예시
+#### 파라미터 정의 규칙 (Pydantic Field)
 
-전략 폴더의 `__init__.py` 파일에 클래스 정의를 작성하세요:
+외부 사용자가 전략의 파라미터 정보를 JSON 형태로 받을 수 있도록, **Pydantic 모델**을 사용하여 파라미터를 정의해야 합니다.
+
+**필수 규칙:**
+
+1. **Pydantic BaseModel 사용**: 전략 클래스와 별도로 `{StrategyName}Params` 클래스를 생성하세요.
+2. **Field 정의**: 모든 필드는 `Field()`를 사용하여 메타데이터를 포함하세요.
+   - `title`: 필드의 한글 이름 (UI에 표시)
+   - `description`: 상세 설명 (필수 조건, 제약사항 포함)
+   - `json_schema_extra={"example": ...}`: 예시값 (직접 `example=` 사용 금지)
+3. **유효성 검사**: 숫자 필드에는 적절한 검증을 추가하세요.
+   - `gt=0`: 0보다 큰 값
+   - `ge=0`: 0 이상의 값
+   - `le=1`: 1 이하의 값
+4. **parameter_schema 속성**: 전략 클래스에 `parameter_schema: dict = {StrategyName}Params.model_json_schema()` 추가
+
+**파라미터 정의 예시:**
 
 ```python
+from pydantic import BaseModel, Field
+from typing import Optional
 
+class MySMAConditionParams(BaseModel):
+    """
+    나만의 SMA 기반 컨디션 파라미터
+    
+    외부 사용자가 이 전략을 사용할 때 필요한 파라미터를 정의합니다.
+    """
+    
+    short_period: int = Field(
+        5,
+        title="단기 이동평균 기간",
+        description="단기 이동평균을 계산할 기간 (예: 5일)",
+        gt=0,
+        json_schema_extra={"example": 5}
+    )
+    
+    long_period: int = Field(
+        20,
+        title="장기 이동평균 기간",
+        description="장기 이동평균을 계산할 기간 (예: 20일)",
+        gt=0,
+        json_schema_extra={"example": 20}
+    )
+    
+    threshold: Optional[float] = Field(
+        None,
+        title="임계값",
+        description="매수/매도 신호를 발생시킬 임계값 (%)",
+        ge=0,
+        le=100,
+        json_schema_extra={"example": 5.0}
+    )
+```
+
+#### **__init__.py 예시
+
+전략 폴더의 `__init__.py` 파일에 Pydantic 파라미터 모델과 전략 클래스를 모두 정의하세요:
+
+```python
+from pydantic import BaseModel, Field
+from typing import Optional
 from programgarden_core import BaseStrategyCondition, BaseStrategyConditionResponseType
+
+
+class MySMAConditionParams(BaseModel):
+    """나만의 SMA 기반 컨디션 파라미터"""
+    
+    short_period: int = Field(
+        5,
+        title="단기 이동평균 기간",
+        description="단기 이동평균을 계산할 기간",
+        gt=0,
+        json_schema_extra={"example": 5}
+    )
+    
+    long_period: int = Field(
+        20,
+        title="장기 이동평균 기간",
+        description="장기 이동평균을 계산할 기간",
+        gt=0,
+        json_schema_extra={"example": 20}
+    )
+
 
 class MySMACondition(BaseStrategyCondition):
     id: str = "MySMACondition"
-    description: str = "나만의 SMA 기반 컨디션"
+    name: str = "나만의 SMA 기반 컨디션"
+    description: str = "매수/매도 신호를 생성합니다."
+    parameter_schema: dict = MySMAConditionParams.model_json_schema()
 
     def __init__(self, short_period: int = 5, long_period: int = 20, **kwargs):
         super().__init__()
@@ -111,6 +192,35 @@ class MySMACondition(BaseStrategyCondition):
             "symbol": self.symbol.get("symbol"),
             "data": []
         }
+
+
+__all__ = ["MySMACondition"]
+```
+
+이렇게 정의하면 외부 사용자가 `MySMACondition.parameter_schema`를 통해 다음과 같은 JSON Schema를 받을 수 있습니다:
+
+```python
+{
+  "title": "MySMAConditionParams",
+  "type": "object",
+  "properties": {
+    "short_period": {
+      "type": "integer",
+      "title": "단기 이동평균 기간",
+      "description": "단기 이동평균을 계산할 기간",
+      "example": 5,
+      "exclusiveMinimum": 0
+    },
+    "long_period": {
+      "type": "integer",
+      "title": "장기 이동평균 기간",
+      "description": "장기 이동평균을 계산할 기간",
+      "example": 20,
+      "exclusiveMinimum": 0
+    }
+  },
+  "required": ["short_period", "long_period"]
+}
 ```
 
 #### README.md 예시

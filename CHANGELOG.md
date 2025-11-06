@@ -1,3 +1,8 @@
+## [0.1.7] - 2024-11-06
+### Added
+- parameter_schema 속성 추가 안내 문구 변경 사항 반영
+- 전략 name 반영
+
 ## [0.1.6] - 2025-11-02
 ### Added
 - programgarden-core 0.1.3 버전 수정 내용 반영

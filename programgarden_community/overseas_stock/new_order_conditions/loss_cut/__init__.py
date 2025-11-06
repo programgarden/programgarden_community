@@ -1,17 +1,36 @@
 from __future__ import annotations
 
 from typing import List
+from pydantic import BaseModel, Field
 from programgarden_core import (
     BaseNewOrderOverseasStock, BaseNewOrderOverseasStockResponseType
 )
 
 
+class BasicLossCutManagerParams(BaseModel):
+    """
+    기본 손절매 매니저 파라미터
+
+    외부 사용자가 이 전략을 사용할 때 필요한 파라미터를 정의합니다.
+    """
+
+    losscut: float = Field(
+        -5.0,
+        title="손절매 비율",
+        description="손실이 이 비율 이하로 떨어지면 자동 매도 (예: -5는 -5%)",
+        le=0,
+        json_schema_extra={"example": -5.0}
+    )
+
+
 class BasicLossCutManager(BaseNewOrderOverseasStock):
 
     id: str = "BasicLossCutManager"
-    description: str = "기본 손절매 매니저"
+    name: str = "기본 손절매 매니저"
+    description: str = "손절매 비율에 도달하면 자동으로 매도 주문을 생성합니다."
     securities: List[str] = ["ls-sec.co.kr"]
     order_types = ["new_sell"]
+    parameter_schema: dict = BasicLossCutManagerParams.model_json_schema()
 
     def __init__(
         self,

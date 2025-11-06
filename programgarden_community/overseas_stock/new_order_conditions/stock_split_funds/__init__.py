@@ -2,6 +2,7 @@
 균등하게 분할매수하기 위한 자금배분
 """
 from typing import List, Optional
+from pydantic import BaseModel, Field
 from programgarden_core import (
     BaseNewOrderOverseasStock,
     BaseNewOrderOverseasStockResponseType,
@@ -9,12 +10,51 @@ from programgarden_core import (
 from programgarden_finance import LS, g3101
 
 
+class StockSplitFundsParams(BaseModel):
+    """
+    주식 분할 자금 파라미터
+
+    외부 사용자가 이 전략을 사용할 때 필요한 파라미터를 정의합니다.
+    """
+
+    appkey: Optional[str] = Field(
+        None,
+        title="LS증권 앱키",
+        description="LS증권 API 인증을 위한 앱키"
+    )
+
+    appsecretkey: Optional[str] = Field(
+        None,
+        title="LS증권 앱시크릿키",
+        description="LS증권 API 인증을 위한 앱시크릿키"
+    )
+
+    percent_balance: float = Field(
+        0.4,
+        title="예수금 사용 비율",
+        description="현재 예수금의 몇 %를 사용할지 (0.4 = 40%)",
+        gt=0,
+        le=1,
+        json_schema_extra={"example": 0.4}
+    )
+
+    max_symbols: float = Field(
+        5,
+        title="최대 매수 종목 수",
+        description="최대 몇 종목까지 분할 매수할지",
+        gt=0,
+        json_schema_extra={"example": 5}
+    )
+
+
 class StockSplitFunds(BaseNewOrderOverseasStock):
 
     id: str = "StockSplitFunds"
-    description: str = "주식 분할 자금"
+    name: str = "주식 분할 자금"
+    description: str = "여러 종목에 균등하게 자금을 배분하여 매수합니다."
     securities: List[str] = ["ls-sec.co.kr"]
     order_types = ["new_buy"]
+    parameter_schema: dict = StockSplitFundsParams.model_json_schema()
 
     def __init__(
         self,

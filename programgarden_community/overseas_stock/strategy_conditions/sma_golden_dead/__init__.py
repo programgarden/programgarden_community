@@ -7,6 +7,7 @@ Moving average golden/dead cross detection conditions
 """
 from dataclasses import dataclass
 from typing import List, Literal, Optional, TypedDict
+from pydantic import BaseModel, Field
 from programgarden_core import (
     BaseStrategyConditionResponseOverseasStockType,
     BaseStrategyConditionOverseasStock,
@@ -22,6 +23,14 @@ class ChartDay(TypedDict):
     price: float  # 종가
 
 
+class ChartDayModel(BaseModel):
+    """
+    차트 일별 데이터 (Pydantic 모델)
+    """
+    date: str
+    price: float
+
+
 @dataclass
 class SMASignal:
     """
@@ -33,12 +42,87 @@ class SMASignal:
     date: str
 
 
+class SMAGoldenDeadCrossParams(BaseModel):
+    """
+    SMA Golden/Dead Cross 전략 파라미터
+
+    외부 사용자가 이 전략을 사용할 때 필요한 파라미터를 정의합니다.
+    """
+
+    start_date: Optional[str] = Field(
+        None,
+        title="시작 날짜",
+        description="차트가 시작하는 날짜입니다",
+        json_schema_extra={"example": "20230101"}
+    )
+
+    end_date: Optional[str] = Field(
+        None,
+        title="종료 날짜",
+        description="차트가 종료되는 날짜입니다",
+        json_schema_extra={"example": "20231231"}
+    )
+
+    long_period: int = Field(
+        ...,
+        title="장기 이동평균 기간",
+        description="장기 이동평균을 계산할 기간 (예: 50일)",
+        gt=0,
+        json_schema_extra={"example": 50}
+    )
+
+    short_period: int = Field(
+        ...,
+        title="단기 이동평균 기간",
+        description="단기 이동평균을 계산할 기간 (예: 20일)",
+        gt=0,
+        json_schema_extra={"example": 20}
+    )
+
+    time_category: Literal["months", "weeks", "days"] = Field(
+        "days",
+        title="시간 단위",
+        description="차트 데이터의 시간 단위 (months: 월봉, weeks: 주봉, days: 일봉)"
+    )
+
+    days_prices: Optional[List[ChartDayModel]] = Field(
+        None,
+        title="종가 데이터",
+        description="기간 동안의 종가 리스트 (LS증권 데이터를 사용하지 않는 경우 필수)"
+    )
+
+    use_ls: bool = Field(
+        True,
+        title="LS증권 데이터 사용 여부",
+        description="LS증권 API를 통해 데이터를 조회할지 여부"
+    )
+
+    alignment: Literal["golden", "dead"] = Field(
+        "golden",
+        title="크로스 정렬 방식",
+        description="탐지할 크로스 타입 (golden: 골든크로스, dead: 데드크로스)"
+    )
+
+    appkey: Optional[str] = Field(
+        None,
+        title="LS증권 앱키",
+        description="LS증권 API 인증을 위한 앱키 (use_ls가 True인 경우 필수)"
+    )
+
+    appsecretkey: Optional[str] = Field(
+        None,
+        title="LS증권 앱시크릿키",
+        description="LS증권 API 인증을 위한 앱시크릿키 (use_ls가 True인 경우 필수)"
+    )
+
+
 class SMAGoldenDeadCross(BaseStrategyConditionOverseasStock):
     """
     SMA 해외 주식 클래스
     """
 
     id: str = "SMAGoldenDeadCross"
+    name = "SMA Golden/Dead Cross"
     description: str = """
 Moving average golden/dead cross detection conditions
 
@@ -46,6 +130,7 @@ Moving average golden/dead cross detection conditions
 2) The golden occurred within the most recent 2 data points
 3) The latest alignment is golden (still maintained)
 """
+    parameter_schema: dict = SMAGoldenDeadCrossParams.model_json_schema()
 
     def __init__(
         self,
