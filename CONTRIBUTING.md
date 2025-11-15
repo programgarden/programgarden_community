@@ -44,10 +44,16 @@ ProgramGarden은 오픈소스 프로젝트로, 커뮤니티의 기여를 통해 
 
 커스텀 전략은 [`programgarden-community`](contribution_guide.md)에 기여되며, 상품에 맞는 각 전략별로 **전용 폴더**를 만들어야 합니다. 폴더 이름은 전략의 `클래스` 이름과 동일하게 만드는 것을 추천드립니다.
 
-* **컨디션 클래스**: `programgarden_community/overseas_stock/strategy_conditions/{Strategy ID}/` 폴더 생성
-* **신규매매 전략 클래스**: `programgarden_community/overseas_stock/new_order_conditions/{Strategy ID}/` 폴더 생성
-* **정정매매 전략 클래스**: `programgarden_community/overseas_stock/modify_order_conditions/{Strategy ID}/` 폴더 생성
-* **취소매매 전략 클래스**: `programgarden_community/overseas_stock/cancel_order_conditions/{Strategy ID}/` 폴더 생성
+| 상품 | 전략 유형 | 폴더 경로 |
+| --- | --- | --- |
+| 해외주식 (`overseas_stock`) | 컨디션 | `programgarden_community/overseas_stock/strategy_conditions/{Strategy ID}/` |
+|  | 신규 주문 | `programgarden_community/overseas_stock/new_order_conditions/{Strategy ID}/` |
+|  | 정정 주문 | `programgarden_community/overseas_stock/modify_order_conditions/{Strategy ID}/` |
+|  | 취소 주문 | `programgarden_community/overseas_stock/cancel_order_conditions/{Strategy ID}/` |
+| 해외선물 (`overseas_futureoption`) | 컨디션 | `programgarden_community/overseas_futureoption/strategy_conditions/{Strategy ID}/` |
+|  | 신규 주문 | `programgarden_community/overseas_futureoption/new_order_conditions/{Strategy ID}/` *(없다면 새로 생성)* |
+|  | 정정 주문 | `programgarden_community/overseas_futureoption/modify_order_conditions/{Strategy ID}/` *(없다면 새로 생성)* |
+|  | 취소 주문 | `programgarden_community/overseas_futureoption/cancel_order_conditions/{Strategy ID}/` *(없다면 새로 생성)* |
 
 외에도 상품과 전략 유형에 따라 적절한 디렉토리에 폴더를 생성하세요. 각 전략 폴더에는 다음 파일들이 **필수**로 포함되어야 합니다:
 
@@ -76,6 +82,31 @@ programgarden_community/overseas_stock/
             └── README.md
     ...
 ```
+
+
+해외선물·옵션 전략도 동일한 구조를 따르며, 필요한 디렉터리가 없다면 직접 생성해 주세요.
+
+```
+programgarden_community/overseas_futureoption/
+├── strategy_conditions/
+│   └── FuturesMomentum/
+│       ├── __init__.py
+│       └── README.md
+├── new_order_conditions/
+│   └── FuturesLongEntry/
+│       ├── __init__.py
+│       └── README.md
+├── modify_order_conditions/
+│   └── FuturesTrailingStop/
+│       ├── __init__.py
+│       └── README.md
+└── cancel_order_conditions/
+    └── FuturesCloseAll/
+        ├── __init__.py
+        └── README.md
+    ...
+```
+
 
 ### 3.2. 전략 파일 작성
 
@@ -297,6 +328,6 @@ PR은 검토 후 병합됩니다. 피드백이 있을 수 있으니 적극적으
 * 저작권이 있는 코드를 복사하지 마세요.
 * 전략이 시장 조작이나 불공정 거래를 유발하지 않도록 하세요.
 
-질문이 있으면 Issues나 Discussions를 이용하세요.
+질문이 있으면 네이버카페(https://cafe.naver.com/programgarden)나 카카오톡 오픈톡방(https://open.kakao.com/o/gKVObqUh) 또는 GitHub Discussions를 이용하세요.
 
-시스템 트레이딩 발전에 기여해주셔서 감사합니다!
+### 시스템 트레이딩 발전에 기여해주셔서 감사합니다!

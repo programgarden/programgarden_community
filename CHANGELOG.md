@@ -1,3 +1,7 @@
+## [0.1.8] - 2024-11-11
+### Updated
+- programgarden-core 0.1.6, programgarden-finance 0.1.7 버전으로 변경
+
 ## [0.1.7] - 2024-11-06
 ### Added
 - parameter_schema 속성 추가 안내 문구 변경 사항 반영

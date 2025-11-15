@@ -768,3 +768,6 @@ pip-selfcheck.json
 # End of https://www.toptal.com/developers/gitignore/api/venv,dotenv,virtualenv
 
 .vscode
+
+examples/
+copilot_reading_code/
