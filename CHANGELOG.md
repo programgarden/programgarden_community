@@ -1,3 +1,12 @@
+## [0.1.9] - 2024-11-18
+### Added
+- programgarden-core 0.1.7, programgarden-finance 0.1.8 버전으로 변경
+- 해외선물 추세 전략 추가 완료
+- 해외주식 터틀 추세 추가 완료
+- 전략 parameter_schema 속성 추가 안내 문구 변경 사항 반영
+- 조건 규칙 타입 일부 수정
+
+
 ## [0.1.8] - 2024-11-11
 ### Updated
 - programgarden-core 0.1.6, programgarden-finance 0.1.7 버전으로 변경

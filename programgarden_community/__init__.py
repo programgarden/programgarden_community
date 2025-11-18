@@ -22,10 +22,55 @@ __all__ = [
 
 
 _MODULE_MAP = {
+    # Overseas stock strategy conditions
     "SMAGoldenDeadCross": (
         "programgarden_community.overseas_stock.strategy_conditions.sma_golden_dead",
         "SMAGoldenDeadCross",
     ),
+    "StockMACDShift": (
+        "programgarden_community.overseas_stock.strategy_conditions.macd_momentum_shift",
+        "StockMACDShift",
+    ),
+    "StockRSIStochastic": (
+        "programgarden_community.overseas_stock.strategy_conditions.rsi_stochastic_oscillator",
+        "StockRSIStochastic",
+    ),
+    "StockSMAEMACross": (
+        "programgarden_community.overseas_stock.strategy_conditions.sma_ema_trend_cross",
+        "StockSMAEMACross",
+    ),
+    "TurtleBreakoutFilter": (
+        "programgarden_community.overseas_stock.strategy_conditions.turtle_breakout_filter",
+        "TurtleBreakoutFilter",
+    ),
+    "TurtleLiquidityFilter": (
+        "programgarden_community.overseas_stock.strategy_conditions.turtle_liquidity_filter",
+        "TurtleLiquidityFilter",
+    ),
+    "TurtleVolatilityFilter": (
+        "programgarden_community.overseas_stock.strategy_conditions.turtle_volatility_filter",
+        "TurtleVolatilityFilter",
+    ),
+
+    # Overseas futures strategy conditions
+    "FuturesMACDShift": (
+        "programgarden_community.overseas_futureoption.strategy_conditions.macd_momentum_shift",
+        "FuturesMACDShift",
+    ),
+    "FuturesRSIStochastic": (
+        "programgarden_community.overseas_futureoption.strategy_conditions.rsi_stochastic_oscillator",
+        "FuturesRSIStochastic",
+    ),
+    "FuturesSMAEMACross": (
+        "programgarden_community.overseas_futureoption.strategy_conditions.sma_ema_trend_cross",
+        "FuturesSMAEMACross",
+    ),
+    "FuturesEMARiskAdjustedTrend": (
+        "programgarden_community.overseas_futureoption.strategy_conditions.ema_risk_adjusted_trend",
+        "FuturesEMARiskAdjustedTrend",
+    ),
+
+    # Overseas stock order/position helpers
     "StockSplitFunds": (
         "programgarden_community.overseas_stock.new_order_conditions.stock_split_funds",
         "StockSplitFunds",
@@ -34,14 +79,48 @@ _MODULE_MAP = {
         "programgarden_community.overseas_stock.new_order_conditions.loss_cut",
         "BasicLossCutManager",
     ),
+    "TurtlePyramidNewOrder": (
+        "programgarden_community.overseas_stock.new_order_conditions.turtle_pyramid_new_order",
+        "TurtlePyramidNewOrder",
+    ),
+
     "TrackingPriceModifyBuy": (
         "programgarden_community.overseas_stock.modify_order_conditions.tracking_price",
         "TrackingPriceModifyBuy",
     ),
+    "TurtleAdaptiveModify": (
+        "programgarden_community.overseas_stock.modify_order_conditions.turtle_adaptive_modify",
+        "TurtleAdaptiveModify",
+    ),
+
     "PriceRangeCanceller": (
         "programgarden_community.overseas_stock.cancel_order_conditions.price_range_canceller",
         "PriceRangeCanceller",
-    )
+    ),
+    "TurtleSafetyCancel": (
+        "programgarden_community.overseas_stock.cancel_order_conditions.turtle_safety_cancel",
+        "TurtleSafetyCancel",
+    ),
+
+    # Overseas futures order/position helpers
+    "FuturesSplitFunds": (
+        "programgarden_community.overseas_futureoption.new_order_conditions.future_split_funds",
+        "FuturesSplitFunds",
+    ),
+    "FuturesLossCutManager": (
+        "programgarden_community.overseas_futureoption.new_order_conditions.loss_cut",
+        "FuturesLossCutManager",
+    ),
+
+    "FuturesTrackingPriceModify": (
+        "programgarden_community.overseas_futureoption.modify_order_conditions.tracking_price",
+        "FuturesTrackingPriceModify",
+    ),
+
+    "FuturesPriceRangeCanceller": (
+        "programgarden_community.overseas_futureoption.cancel_order_conditions.price_range_canceller",
+        "FuturesPriceRangeCanceller",
+    ),
 }
 
 
