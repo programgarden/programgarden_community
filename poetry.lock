@@ -687,14 +687,14 @@ files = [
 
 [[package]]
 name = "programgarden-finance"
-version = "0.1.7"
+version = "0.1.8"
 description = "프로그램 동산 운영진이 관리하는 증권사 데이터 오픈소스"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "programgarden_finance-0.1.7-py3-none-any.whl", hash = "sha256:ce33ae7249902525e2e7e72431d24162ea6ae7bfa4888484fc537d9b29b87bd8"},
-    {file = "programgarden_finance-0.1.7.tar.gz", hash = "sha256:fd99432e75941f523247199d3b27c5a57720fd4ae01935856d54a1a97fd54f66"},
+    {file = "programgarden_finance-0.1.8-py3-none-any.whl", hash = "sha256:c56c6ce32d925ee5a08b810ff64315de3fd4a789abaeda0c1edc0b4baf52a093"},
+    {file = "programgarden_finance-0.1.8.tar.gz", hash = "sha256:cf9c4dbb5622dd0be7cd425e5252135cd7e56ff8f50b71bab3c7da20aa4ea7c0"},
 ]
 
 [package.dependencies]
@@ -1362,4 +1362,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.9"
-content-hash = "9a8303dcbad9180a1410ba116395618e37c151d833f2d5dc78ab0f3c850c4cf7"
+content-hash = "ab70e776dd9737f88e0db8cf37427c9f46cad8b4b2fc5e42b4a591d32b496c39"
