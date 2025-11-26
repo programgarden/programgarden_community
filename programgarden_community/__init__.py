@@ -51,6 +51,10 @@ _MODULE_MAP = {
         "programgarden_community.overseas_stock.strategy_conditions.turtle_volatility_filter",
         "TurtleVolatilityFilter",
     ),
+    "NewsSentimentAnalysis": (
+        "programgarden_community.overseas_stock.strategy_conditions.news_sentiment_analysis",
+        "NewsSentimentAnalysis",
+    ),
 
     # Overseas futures strategy conditions
     "FuturesMACDShift": (
