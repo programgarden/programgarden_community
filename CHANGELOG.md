@@ -1,3 +1,8 @@
+## [0.1.11] - 2024-11-25
+### Updated
+- programgarden-core 0.1.8, programgarden-finance 0.1.9 버전으로 변경
+- news_sentiment_analysis 전략 추가 완료
+
 ## [0.1.10] - 2024-11-20
 ### Updated
 - programgarden-finance 0.1.9 버전으로 변경
