@@ -3,9 +3,9 @@ authors = [
     {"name" = "프로그램동산","email" = "coding@programgarden.com"}
 ]
 homepage = "https://programgarden.com"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 name = "programgarden-community"
-version = "0.1.12"
+version = "0.1.15"
 description = "증권 분석에 필요한 외부 전략 모아둔 플러그인"
 readme = "README.md"
 
@@ -13,15 +13,31 @@ readme = "README.md"
 packages = [
     { include = "programgarden_community" }
 ]
-exclude = ["example/**", "**/.env"]
+exclude = [
+    "example/**",
+    "**/.env",
+    "**/images/**",
+    "**/*.png",
+    "**/*.jpg",
+    "**/*.jpeg",
+    "**/*.gif",
+    "**/tests/**",
+    "**/README.md",
+    "**/__pycache__/**",
+    "**/*.pyc"
+]
 
 [tool.poetry.dependencies]
 pydantic = ">=2.11.7,<3.0.0"
 croniter = "^6.0.0"
 python-dotenv = "^1.1.1"
-programgarden-finance = "^0.1.9"
-programgarden-core = "^0.1.8"
+programgarden-finance = "^0.1.13"
+programgarden-core = "^0.1.12"
 bs4 = "^0.0.2"
+
+[tool.poetry.group.dev.dependencies]
+matplotlib = ">=3.7,<4"
+numpy = ">=1.24,<2"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

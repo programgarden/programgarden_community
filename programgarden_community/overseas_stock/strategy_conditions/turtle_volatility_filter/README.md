@@ -18,6 +18,12 @@ ProgramGarden Team
 **ATR(Average True Range)** 라고 부르며,
 쉽게 말해 **“요즘 이 종목이 하루에 평균 얼마나 흔들리는지”** 를 나타내는 값입니다.
 
+## 전략 차트 예시
+
+아래 차트는 ATR(평균 진폭)로 변동성을 측정하고, 최소 기준값을 통과하는지 보여줍니다.
+
+![ATR Volatility Chart](images/atr_volatility.png)
+
 ## 이 전략이 필요한 이유
 
 터틀 전략은 "시장에 충분한 파도가 있을 때만 서핑한다"는 생각에서 출발합니다.

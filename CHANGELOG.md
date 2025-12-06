@@ -1,3 +1,17 @@
+## [0.1.15] - 2024-12-06
+### Updated
+- programgarden-core 0.1.12, programgarden-finance 0.13 버전으로 변경
+
+## [0.1.14] - 2024-12-06
+### Added
+- 해외주식/해외선물 기술적 분석 전략 추가: AD, ADX, ATR, Beta, Bollinger Bands, Candle Patterns, CCI, KAMA, OBV, Parabolic SAR, Williams %R
+- 각 전략별 README.md에 차트 시각화 이미지 추가
+- turtle_liquidity_filter 유동성 필터 차트 이미지 추가
+
+## [0.1.13] - 2024-12-05
+### Updated
+- python3.10 이상 버전 지원으로 변경
+
 ## [0.1.12] - 2024-11-27
 ### Updated
 - programgarden-core 0.1.8, programgarden-finance 0.1.9 버전으로 변경
